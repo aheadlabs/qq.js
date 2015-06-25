@@ -1,7 +1,11 @@
 /*!
  * qq.js
  * http://aheadlabs.com/projects/qq.es/
+<<<<<<< HEAD
  * Version: 0.1.1
+=======
+ * Version: 0.1
+>>>>>>> de690cca304ab15db9d50ab37bc71d8253c9fa62
  *
  * Copyright 2015 Iván Sainz, Ahead Labs (http://aheadlabs.com)
  * Released under th GNU General Public License version 3
