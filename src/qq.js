@@ -1,6 +1,6 @@
 /*!
  * qq.js
- * http://qq.es/
+ * http://aheadlabs.com/projects/qq.es/
  * Version: 0.1
  *
  * Copyright 2015 Iván Sainz, Ahead Labs (http://aheadlabs.com)
