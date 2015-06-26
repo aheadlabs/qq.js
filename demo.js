@@ -6,13 +6,18 @@
     //Create routes array. Each route has a relative URL from the root, an array of fields (id,value) and an array of callback functions
     var routes = [
         new Route(
-            "/concesionario/tasacion/nueva",
+            "/dealership/rating/new",
             [
                 [id = "#Contact_name", value = "Name"],
                 [id = "#Contact_lastName", value = "Last name"],
                 [id = "#Contact_mobilePhone", value = "+34600000000"],
                 [id = "#Contact_email", value = "name@domain.es"],
-                [id = "#Contact_company", value = "Company"]
+                [id = "#Contact_company", value = "Company"],
+                [id = "#Vehicle_brand", value = "Audi"],
+                [id = "#Vehicle_model", value = "RS6 Avant"],
+                [id = "#Vehicle_version", value = "4.0 TFSI Quattro Tiptronic"],
+                [id = "#Rating_minimumRatingAmount", value = "2500"],
+                [id = "#Rating_maximumRatingAmount", value = "4300"]
             ],
             [callback1, callback2]
         )
@@ -23,6 +28,9 @@
 
     //Set if form fields will or will not be populated
     myWebsite.populateFormFields = true;
+    
+    //set up the filters
+    tc.populateFormFieldsFilter = ["#Contact_", "#Rating_"]; //here, the #Vehicle fields won't be processed
 
     //init the process
     myWebsite.init();
