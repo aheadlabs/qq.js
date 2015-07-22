@@ -1,7 +1,7 @@
 /*!
  * qq.js
  * http://aheadlabs.com/projects/qq.es/
- * Version: 0.2
+ * Version: 0.3
  *
  * Copyright 2015 Iván Sainz, Ahead Labs (http://aheadlabs.com)
  * Released under th GNU General Public License version 3
@@ -51,7 +51,8 @@ function Website(debug, routes) {
 
         //process routes
         for (var i = 0; i < _routes.length; i++) {
-            if (routes[i].url == window.location.pathname) {
+            //console.log(compareRoutesToPath(routes[i].url));
+            if (compareRoutesToPath(routes[i].url)) {
                 if (_debug) console.log("[R] Processing route: " + routes[i].url);
 
                 //filter form fields
@@ -76,6 +77,8 @@ function Website(debug, routes) {
                     if (_debug) console.log(routes[i].callbacks[j]);
                     routes[i].callbacks[j].call(_debug);
                 }
+
+                break;
             }
         }
     };
@@ -94,6 +97,32 @@ function Route(url, fieldset, callbacks) {
     //callbacks
     this.callbacks = callbacks;
 };
+
+//Compares the passed route to the browser route
+function compareRoutesToPath(route) {
+    var splittedRoute = route.split("/");
+    var splittedPath = window.location.pathname.split("/");
+    var result = false;
+
+    try {
+        for (var i = 0; i < splittedRoute.length; i++) {
+            if (splittedRoute[i] != splittedPath[i]) {
+                if (splittedRoute[i] == "{id}" && !isNaN(splittedPath[i]))
+                    result = true;
+                else {
+                    result = false;
+                    break;
+                }
+            }
+            else {
+                result = true;
+            }
+        }
+    } catch (e) {}
+    finally {
+        return result;
+    }
+}
 
 //#endregion
 
